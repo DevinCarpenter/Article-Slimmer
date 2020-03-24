@@ -13,13 +13,20 @@ myApp.controller('SmmryController', ['$scope', '$http', function($scope, $http) 
       remainingRequests: 0
     };
     $scope.title = "Article Slimmer";
+    $scope.secondaryTitle = "Powered by Smmry";
+    $scope.pageTitle = "Create A Summary";
     $scope.url1 = "";
     $scope.myFunction = function(){
         if(!$scope.articleData.url) alert("Please include a URL");
         else{
         $http({
           method: 'GET',
-          url: `http://api.smmry.com/?SM_API_KEY=${key}&SM_URL=${$scope.articleData.url}`
+          url: `http://api.smmry.com/?SM_API_KEY=${key}&SM_URL=${$scope.articleData.url}`,
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Accept': "application/json, text/plain, */*",
+            'Access-Control-Allow-Headers': "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+          }
         }).then(function successCallback(response) {
             $scope.articleData.rawData = response;
             $scope.articleData.dataObject = Object.assign(response.data);

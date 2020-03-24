@@ -3,8 +3,10 @@
 
   <head>
     <meta charset="UTF-8" />
+    <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,shrink-to-fit=no" name="viewport">
     <title>Article Slimmer</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script> -->
+    <script src="js/angular_1.7.9.js"></script>
     <script src="js/app.js"></script>
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/main.css">
@@ -12,28 +14,60 @@
 
   <body ng-app="article-slimmer">
     <div ng-controller="SmmryController">
-      <div style="text-align:center">
-        <h1>
-          {{title}}
-        </h1>
+      <div class="topMenuContainer primaryShadow">
+        <div class="topMenuAppTitleContainer">
+          <h1 class="topMenuTitle">
+            {{title}}
+          </h1>
+          <h2 class="topMenuSecondaryTitle">
+            {{secondaryTitle}}
+          </h2>
+        </div>
+        <div class="topMenuPageTitleContainer">
+          <h1 class="topMenuPageTitle">{{pageTitle}}</h1>
+        </div>
       </div>
-      <h2 class="center flexed">
-        Paste a link to an article you would like slimmer.
-      </h2>
-      <div class="main-url-box center flexed">
-        <input ng-model="articleData.url" class="url-box flexed center" type="text" name="main-url-entry" placeholder="Paste Your Link Here" />
+      <div class="createASummaryContainer">
+        <!-- <section class="content">
+          <span class="input input--yoshiko">
+            <input class="input__field input__field--yoshiko" type="text" id="input-10" />
+            <label class="input__label input__label--yoshiko" for="input-10">
+              <span class="input__label-content input__label-content--yoshiko" data-content="Bird's Color">Bird's
+                Color</span>
+            </label>
+          </span>
+        </section> -->
+        <span class="input input--hoshi">
+          <input ng-model="articleData.url" class="input__field input__field--hoshi" type="text" id="input-4" />
+          <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="input-4">
+            <span class="input__label-content input__label-content--hoshi">Article Link (URL)</span>
+          </label>
+        </span>
+        <!-- <h2 class="center flexed">
+          Article Link (URL)
+        </h2> -->
+        <!-- <div class="main-url-box center flexed">
+          <input ng-model="articleData.url" class="url-box flexed center" type="text" name="main-url-entry" placeholder="Paste Your Link Here" />
+        </div> -->
+        <button ng-click="myFunction()" class="center flexed summarizeButton primaryShadow">Summarize</button>
+        <h2 class="center">Article Reduced By:</h2>
+        <div class="articleSummaryContainer">
+          <div class="articleSummaryTitleContainer">
+            <h1 class="articleSummaryTitle">Article Summary</h1>
+          </div>
+          <div class="articleSummaryContent primaryShadow">
+            <h2 class="center underlined">
+              {{articleData.title}}
+            </h2>
+            <p class="content-box flexed">{{articleData.content}}</p>
+          </div>
+        </div>
       </div>
-      <button ng-click="myFunction()" class="center flexed">Slim It Down!</button>
-      <h2 class="center">Slimmer details</h2>
-      <div class="details-box">
-        <p>Character Count: {{articleData.charCount}}</p>
-        <p>Requests Status: {{articleData.remainingRequests}}</p>
+      <div class="bottomMenuContainer primaryShadow">
+        <img class="menuIcon activePage" src="img/newspaper-solid.svg" />
+        <img class="menuIcon" src="img/list-solid.svg" />
+        <img class="menuIcon" src="img/question-solid.svg" />
       </div>
-      <h2 class="center flexed">Article Summary</h2>
-      <h2 class="flexed center underlined">
-        {{articleData.title}}
-      </h2>
-      <p class="content-box flexed">{{articleData.content}}</p>
   </div>
     <!-- 
 Copyright 2017 Google Inc. All Rights Reserved.
